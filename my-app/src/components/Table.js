@@ -129,7 +129,7 @@ function Table({ data, setData ,setTogglesubmit,setEdited,compare,setEditvalue})
     </table>
     
     </div>
-    <Link id="profile" to="/profile">aas</Link>
+    <Link id="profile" to="/profile">Profile</Link>
     
     
     </>
