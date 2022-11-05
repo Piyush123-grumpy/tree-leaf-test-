@@ -34,7 +34,8 @@ function compare(a, b) {
 }
 
 
-function Form({data,setData,toggleSubmit,setTogglesubmit,edited,setEditvalue}) {
+function Form(props) {
+  const {data,setData,toggleSubmit,setTogglesubmit,edited,setEditvalue}=props
   const [countries, setCountries] = useState([]);
  
   const {

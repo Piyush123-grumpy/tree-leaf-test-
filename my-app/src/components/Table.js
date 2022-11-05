@@ -5,7 +5,8 @@ import { Link, } from "react-router-dom";
 
 
 
-function Table({ data, setData ,setTogglesubmit,setEdited,compare,setEditvalue}) {
+function Table(props) {
+  const { data, setData ,setTogglesubmit,setEdited,compare,setEditvalue}=props
 
   const [ascending,setAscending]=useState(false)
   function capitalizeFirstLetter(string) {
@@ -75,7 +76,7 @@ function Table({ data, setData ,setTogglesubmit,setEdited,compare,setEditvalue})
             <td>{data.City}</td>
             <td>{data.Countries}</td>
             <td>
-              <button
+              <button id="delete"
                 onClick={() => {
                   deleteItem(data.id);
                   setTogglesubmit(true)
