@@ -1,0 +1,317 @@
+body {
+    background: rgb(173, 39, 145);
+    background: linear-gradient(90deg, rgba(173, 39, 145, 1) 12%, rgba(38, 121, 133, 1) 54%, rgba(37, 123, 135, 1) 80%, rgba(52, 88, 89, 1) 91%, rgba(0, 212, 255, 1) 100%);
+}
+
+form {
+    border-radius: 10px;
+    margin: auto;
+    width: 50%;
+    padding: 30px 20px 30px 20px;
+    background-color: white;
+}
+
+.errors {
+    color: red;
+}
+
+#delete {
+    margin-right: 10px;
+}
+
+h2,
+h4 {
+    color: white;
+    text-align: center;
+}
+
+.fields,
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.formClass {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    width: 50%;
+    margin: auto;
+}
+
+.address input {
+    width: 50%;
+}
+
+#specialLabel {
+    display: block;
+    width: 50%;
+    margin: auto;
+}
+
+.address {
+    display: flex;
+}
+
+.address input {
+    margin: 2px;
+}
+
+.btnContainer {
+    margin: auto;
+    width: 50%;
+}
+
+.btnForm {
+    cursor: pointer;
+    width: 150px;
+    padding: 10px 10px 10px 10px;
+    background: rgb(173, 39, 145);
+    background: linear-gradient(90deg, rgba(173, 39, 145, 1) 12%, rgba(38, 121, 133, 1) 54%, rgba(37, 123, 135, 1) 80%, rgba(52, 88, 89, 1) 91%, rgba(0, 212, 255, 1) 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+
+
+/* table css */
+
+tr {
+    cursor: pointer;
+    transition: all .25s ease-in-out
+}
+
+table {
+    border-collapse: collapse;
+    margin: 50px auto;
+}
+
+
+/* Zebra striping */
+
+tr {
+    background: #eee;
+}
+
+th {
+    background: #000;
+    color: white;
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    font-size: 18px;
+}
+
+
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+    table {
+        width: 100%;
+    }
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        border: 1px solid #ccc;
+    }
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        /* Label the data */
+        content: attr(data-column);
+        color: #000;
+        font-weight: bold;
+    }
+}
+
+#table {
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.table-height {
+    height: 300px;
+    overflow-x: auto
+}
+
+
+/* table code */
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 24px;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 10px;
+}
+
+.editValue-section {
+    margin-top: 60px;
+}
+
+.container {
+    margin-top: 30px;
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.table {
+    width: 100%;
+    border: 1px solid #eee;
+}
+
+.table-header {
+    display: flex;
+    width: 100%;
+    background: #000;
+    padding: 18px 0;
+}
+
+.table-row {
+    display: flex;
+    width: 100%;
+    padding: 18px 0;
+}
+
+.table-row:nth-of-type(odd) {
+    background: #eee;
+}
+
+.table-data {
+    flex: 1 1 20%;
+    text-align: center;
+}
+
+.header__item {
+    flex: 1 1 300px;
+    text-align: center;
+}
+
+.header__item {
+    text-transform: uppercase;
+    color: white;
+}
+
+.filter__link {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.filter__link::after {
+    content: '';
+    position: absolute;
+    right: -18px;
+    color: white;
+    font-size: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.filter__link.desc::after {
+    content: '(desc)';
+}
+
+.filter__link.asc::after {
+    content: '(asc)';
+}
+
+#tableButtonName {
+    height: 30px;
+    margin: 10px 40px 10px 40px;
+    width: 80px;
+    background: rgb(173, 39, 145);
+    background: linear-gradient(90deg, rgba(173, 39, 145, 1) 12%, rgba(38, 121, 133, 1) 54%, rgba(37, 123, 135, 1) 80%, rgba(52, 88, 89, 1) 91%, rgba(0, 212, 255, 1) 100%);
+    color: white;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: white;
+}
+
+#tableButtonName:hover {
+    cursor: pointer;
+    color: #3498db;
+    background: white;
+}
+
+#profile {
+    margin: 30px 40px 30px 40px;
+    padding: 10px 50px 10px 50px;
+    text-decoration: none;
+    background: rgb(173, 39, 145);
+    background: linear-gradient(90deg, rgba(173, 39, 145, 1) 12%, rgba(38, 121, 133, 1) 54%, rgba(37, 123, 135, 1) 80%, rgba(52, 88, 89, 1) 91%, rgba(0, 212, 255, 1) 100%);
+    color: white;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: white;
+}
+
+#profile:hover {
+    cursor: pointer;
+    color: #3498db;
+    background: white;
+}
