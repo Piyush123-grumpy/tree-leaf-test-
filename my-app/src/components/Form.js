@@ -10,7 +10,7 @@ const initialValues = {
   City: "",
   District: "",
   Province: "Province 1",
-  Countries:"Nepal"
+  Countries: "Nepal",
 };
 
 const provinces = [
@@ -23,56 +23,46 @@ const provinces = [
   { key: "Province 7" },
 ];
 
-function compare(a, b) {
-  if (a.name.common < b.name.common) {
-    return -1;
-  }
-  if (a.name.common > b.name.common) {
-    return 1;
-  }
-  return 0;
-}
-
-
 function Form(props) {
-  const {data,setData,toggleSubmit,setTogglesubmit,edited,setEditvalue}=props
-  const [countries, setCountries] = useState([]);
- 
   const {
-    values,
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-  } = useFormik({
-    initialValues: initialValues,
-    validationSchema: signUpSchema,
-    onSubmit: (value) => {
-      console.log(toggleSubmit)
-        if(!toggleSubmit){
-          console.log(edited)
-            setData(
-              data.map((element)=>{
-                if (element.id===edited){
-                  Object.assign(element, value)
-                  setTogglesubmit(true)
-                  setEditvalue({})
-                }
-                return element
-              })
-            )
+    data,
+    setData,
+    toggleSubmit,
+    setTogglesubmit,
+    edited,
+    setEditvalue,
+    compare,
+  } = props;
+  const [countries, setCountries] = useState([]);
+
+  const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
+    useFormik({
+      initialValues: initialValues,
+      validationSchema: signUpSchema,
+      onSubmit: (value) => {
+        console.log(toggleSubmit);
+        if (!toggleSubmit) {
+          console.log(edited);
+          setData(
+            data.map((element) => {
+              if (element.id === edited) {
+                Object.assign(element, value);
+                setTogglesubmit(true);
+                setEditvalue({});
+              }
+              return element;
+            })
+          );
+        } else {
+          const allInputData = {
+            id: new Date().getTime().toString(),
+            ...value,
+          };
+          setData([...data, allInputData]);
         }
-        else{
-          const allInputData={id:new Date().getTime().toString(), ...value}
-        setData([...data,allInputData])
-        }
-        
-        
-    },
-  });
+      },
+    });
   useEffect(() => {
-   
     fetch("https://restcountries.com/v3.1/all")
       .then((res) => {
         return res.json();
@@ -82,13 +72,10 @@ function Form(props) {
       });
   }, []);
 
-  
-
-  countries.sort(compare);
+  countries.sort((a, b) => compare(a.name.common, b.name.common));
 
   return (
     <div className="create">
-
       <form onSubmit={handleSubmit}>
         <div className="formClass">
           <label htmlFor="Name">Name*</label>
@@ -102,7 +89,9 @@ function Form(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {errors.Name && touched.Name ? <p className="errors">{errors.Name}</p> : null}
+          {errors.Name && touched.Name ? (
+            <p className="errors">{errors.Name}</p>
+          ) : null}
         </div>
 
         <div className="formClass">
@@ -117,7 +106,9 @@ function Form(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {errors.Email && touched.Email ? <p className="errors">{errors.Email}</p> : null}
+          {errors.Email && touched.Email ? (
+            <p className="errors">{errors.Email}</p>
+          ) : null}
         </div>
         <div className="formClass">
           <label htmlFor="PhoneNumber">Phone Number*</label>
@@ -170,24 +161,31 @@ function Form(props) {
         <div className="formClass">
           <label htmlFor="Province">Province</label>
           <select name="Province" id="" onChange={handleChange}>
-            {provinces.map((province)=>{
-                return <option>{province.key} </option>;
+            {provinces.map((province) => {
+              return <option>{province.key} </option>;
             })}
           </select>
-        </div> 
+        </div>
 
         <div className="formClass">
           <label htmlFor="Countries">Countries</label>
           <select onChange={handleChange} name="Countries" id="">
-            <option style={{display:"None"}}>Nepal</option>
+            <option style={{ display: "None" }}>Nepal</option>
             {countries.map((Country) => {
               return <option>{Country.name.common} </option>;
             })}
           </select>
           <div className="btnContainer">
-          { toggleSubmit ?<button className="btnForm" type="submit">Add to do</button>:<button className="btnForm" type="submit">Edit</button>}
+            {toggleSubmit ? (
+              <button className="btnForm" type="submit">
+                Add to do
+              </button>
+            ) : (
+              <button className="btnForm" type="submit">
+                Edit
+              </button>
+            )}
           </div>
-          
         </div>
       </form>
     </div>

@@ -13,10 +13,10 @@ const getLocalItems = () => {
   }
 }
 function compare(a, b) {
-  if (a.Name.trim() < b.Name.trim()) {
+  if (a < b) {
     return -1;
   }
-  if (a.Name.trim() > b.Name.trim()) {
+  if (a > b) {
     return 1;
   }
   return 0;

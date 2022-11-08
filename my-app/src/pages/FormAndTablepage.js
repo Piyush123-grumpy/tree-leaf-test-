@@ -21,6 +21,7 @@ function FormAndTablepage(props) {
       <h2>People Tracker</h2>
       <Form
         setEditvalue={setEditvalue}
+        compare={compare}
         edited={edited}
         data={data}
         setData={setData}
